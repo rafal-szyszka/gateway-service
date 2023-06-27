@@ -46,6 +46,15 @@
         </dependencies>
     </dependencyManagement>
 
+    <profiles>
+        <profile>
+            <id>default</id>
+            <build>
+                <finalName>gateway-service</finalName>
+            </build>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>
