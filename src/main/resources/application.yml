@@ -24,20 +24,20 @@ spring:
         - id: forms_meta_route
           uri: ${FORMS_SERVICE_URI}
           predicates:
-            - Path=/forms-service/v1/meta/**
+            - Path=/v1/meta/**
           filters:
-            - RewritePath=/forms-service/v1/meta/(?<PVARS>/?.*), /v1/meta/$\{PVARS}
+            - RewritePath=/v1/meta/(?<PVARS>/?.*), /v1/meta/$\{PVARS}
 
         - id: forms_queries_route
           uri: ${FORMS_SERVICE_URI}
           predicates:
-            - Path=/forms-service/v1/queries/**
+            - Path=/v1/queries/**
           filters:
-            - RewritePath=/forms-service/v1/queries/(?<PVARS>/?.*), /v1/queries/$\{PVARS}
+            - RewritePath=/v1/queries/(?<PVARS>/?.*), /v1/queries/$\{PVARS}
 
         - id: forms_commands_route
           uri: ${FORMS_SERVICE_URI}
           predicates:
-            - Path=/forms-service/v1/commands/**
+            - Path=/v1/commands/**
           filters:
-            - RewritePath=/forms-service/v1/commands/(?<PVARS>/?.*), /v1/commands/$\{PVARS}
+            - RewritePath=/v1/commands/(?<PVARS>/?.*), /v1/commands/$\{PVARS}
