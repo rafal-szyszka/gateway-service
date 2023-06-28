@@ -8,18 +8,6 @@ logging:
 spring:
   cloud:
     gateway:
-      globalcors:
-        cors-configurations:
-          '[/**]':
-              allowedOrigins: "*"
-              allowedHeaders: "*"
-              allowedMethods:
-                - GET
-                - POST
-                - PUT
-                - DELETE
-                - OPTIONS
-                - PATCH
       routes:
         - id: forms_meta_route
           uri: ${FORMS_SERVICE_URI}
