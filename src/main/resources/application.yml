@@ -4,10 +4,20 @@ logging:
     reactor.netty.http.server: DEBUG
     reactor.netty.http.client: DEBUG
 
-
 spring:
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:3000"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - PATCH
+              - DELETE
+              - OPTIONS
       routes:
         - id: forms_meta_route
           uri: ${FORMS_SERVICE_URI}
