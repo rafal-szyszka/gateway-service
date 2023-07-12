@@ -39,3 +39,24 @@ spring:
             - Path=/v1/commands/**
           filters:
             - RewritePath=/v1/commands/(?<PVARS>/?.*), /v1/commands/$\{PVARS}
+
+        - id: data_service_queries_route
+          uri: ${DATA_SERVICE_URI}
+          predicates:
+            - Path=/v1/data/queries/**
+          filters:
+            - RewritePath=/v1/data/queries/(?<PVARS>/?.*), /v1/queries/$\{PVARS}
+
+        - id: data_service_commands_route
+          uri: ${DATA_SERVICE_URI}
+          predicates:
+            - Path=/v1/data/commands/**
+          filters:
+            - RewritePath=/v1/data/commands/(?<PVARS>/?.*), /v1/commands/$\{PVARS}
+
+        - id: data_service_meta_route
+          uri: ${DATA_SERVICE_URI}
+          predicates:
+            - Path=/v1/data/meta/**
+          filters:
+            - RewritePath=/v1/data/meta/(?<PVARS>/?.*), /v1/meta/$\{PVARS}
