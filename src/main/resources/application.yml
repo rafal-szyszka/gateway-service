@@ -57,8 +57,6 @@ spring:
         - id: data_service_meta_route
           uri: ${DATA_SERVICE_URI}
           predicates:
-            - Path=/v1/data/meta
             - Path=/v1/data/meta/**
           filters:
-            - RewritePath=/v1/data/meta, /v1/meta
             - RewritePath=/v1/data/meta/(?<PVARS>/?.*), /v1/meta/$\{PVARS}
