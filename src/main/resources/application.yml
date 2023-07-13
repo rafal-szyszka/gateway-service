@@ -53,8 +53,20 @@ spring:
             - Path=/v1/data/commands
           filters:
             - RewritePath=/v1/data/commands, /v1/commands
+        - id: data_service_commands_all_route
+          uri: ${DATA_SERVICE_URI}
+          predicates:
+            - Path=/v1/data/commands/all
+          filters:
+            - RewritePath=/v1/data/commands/all, /v1/commands/all
 
         - id: data_service_meta_route
+          uri: ${DATA_SERVICE_URI}
+          predicates:
+            - Path=/v1/data/meta
+          filters:
+            - RewritePath=/v1/data/meta, /v1/meta
+        - id: data_service_meta_model_route
           uri: ${DATA_SERVICE_URI}
           predicates:
             - Path=/v1/data/meta/**
