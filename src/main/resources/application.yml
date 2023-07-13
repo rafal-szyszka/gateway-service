@@ -43,20 +43,22 @@ spring:
         - id: data_service_queries_route
           uri: ${DATA_SERVICE_URI}
           predicates:
-            - Path=/v1/data/queries/**
+            - Path=/v1/data/queries
           filters:
-            - RewritePath=/v1/data/queries/(?<PVARS>/?.*), /v1/queries/$\{PVARS}
+            - RewritePath=/v1/data/queries, /v1/queries
 
         - id: data_service_commands_route
           uri: ${DATA_SERVICE_URI}
           predicates:
-            - Path=/v1/data/commands/**
+            - Path=/v1/data/commands
           filters:
-            - RewritePath=/v1/data/commands/(?<PVARS>/?.*), /v1/commands/$\{PVARS}
+            - RewritePath=/v1/data/commands, /v1/commands
 
         - id: data_service_meta_route
           uri: ${DATA_SERVICE_URI}
           predicates:
+            - Path=/v1/data/meta
             - Path=/v1/data/meta/**
           filters:
+            - RewritePath=/v1/data/meta, /v1/meta
             - RewritePath=/v1/data/meta/(?<PVARS>/?.*), /v1/meta/$\{PVARS}
