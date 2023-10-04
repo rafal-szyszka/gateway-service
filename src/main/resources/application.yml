@@ -84,7 +84,7 @@ spring:
           predicates:
             - Path=/v1/lists/queries/**
           filters:
-            - RewritePath=/v1/lists/queries/(?<PVARS>/?.*, /v1/queries/$\{PVARS}
+            - RewritePath=/v1/lists/queries/(?<PVARS>/?.*), /v1/queries/$\{PVARS}
 
         - id: lists_service_commands_route
           uri: ${LISTS_SERVICE_URI}
