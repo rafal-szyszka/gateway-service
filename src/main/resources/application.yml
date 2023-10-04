@@ -10,7 +10,10 @@ spring:
       globalcors:
         corsConfigurations:
           '[/**]':
-            allowedOrigins: "http://localhost:3000"
+            allowedOrigins:
+              - "http://localhost:3000"
+              - "https://qa.bp2.cloud"
+              - "https://bp2.cloud"
             allowedMethods:
               - GET
               - POST
@@ -19,6 +22,7 @@ spring:
               - DELETE
               - OPTIONS
       routes:
+        # FORMS SERVICE ROUTES
         - id: forms_meta_route
           uri: ${FORMS_SERVICE_URI}
           predicates:
@@ -40,6 +44,7 @@ spring:
           filters:
             - RewritePath=/v1/commands/(?<PVARS>/?.*), /v1/commands/$\{PVARS}
 
+        # DATA SERVICE ROUTES
         - id: data_service_queries_route
           uri: ${DATA_SERVICE_URI}
           predicates:
@@ -72,3 +77,18 @@ spring:
             - Path=/v1/data/meta/**
           filters:
             - RewritePath=/v1/data/meta/(?<PVARS>/?.*), /v1/meta/$\{PVARS}
+
+        # LISTS SERVICE ROUTES
+        - id: lists_service_queries_route
+          uri: ${LISTS_SERVICE_URI}
+          predicates:
+            - Path=/v1/lists/queries/**
+          filters:
+            - RewritePath=/v1/lists/queries/(?<PVARS>/?.*, /v1/queries/$\{PVARS}
+
+        - id: lists_service_commands_route
+          uri: ${LISTS_SERVICE_URI}
+          predicates:
+            - Path=/v1/lists/commands
+          filters:
+            - RewritePath=/v1/lists/commands, /v1/commands
